@@ -9,7 +9,7 @@
 
   <style>
     body {
-      font-family: "Tahoma", sans-serif;
+      font-family: "Times New Roman", Times, serif;
       margin: 0;
       padding: 0;
       background-color: #f4f4f4;
@@ -66,8 +66,11 @@
       border-radius: 6px;
       display: none;
       line-height: 2;
-      font-family: 'Reem Kufi Ink', 'Tahoma', sans-serif;
+      font-family: "Times New Roman", Times, serif;
       font-size: 1.1rem;
+      color: #c00000;
+      direction: ltr;
+      text-align: left;
     }
 
     .source {
@@ -103,6 +106,29 @@
       vertical-align: middle;
       margin-right: 3px;
     }
+  
+    /* توحيد خط السؤال والحل ليكون بخط Times New Roman */
+    .question-page h2,
+    .question-page p,
+    .solution {
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    /* جعل الإجابة الغامقة في سطر مستقل داخل الحل */
+    .solution strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* كلاس لتمييز أجزاء معيّنة داخل الحل (تظليل بالقلم الفاقع) */
+    .solution .highlight-part {
+      font-weight: bold;
+      color: #000000;
+      background-color: #fff3b0;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
   </style>
 </head>
 <body>
@@ -1944,6 +1970,7 @@
 
 </div>
 
+
 <script>
   let currentQuestion = 1;
   const totalQuestions = 50;
@@ -1976,7 +2003,24 @@
       sol.style.display = "block";
     }
   }
+
+  // تحويل أي كتابة من الشكل a^{3} أو 0.95^{4} إلى أسّ مرتفع حقيقي
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".container");
+    if (!container) return;
+
+    let inner = container.innerHTML;
+
+    // أعداد ذات أسس مثل 0.95^{3}
+    inner = inner.replace(/(\d+(?:\.\d+)?)\^\{(\d+)\}/g, '$1<sup>$2</sup>');
+
+    // حروف ذات أسس مثل p^{2}, q^{4}, Z^{2}
+    inner = inner.replace(/([A-Za-z])\^\{(\d+)\}/g, '$1<sup>$2</sup>');
+
+    container.innerHTML = inner;
+  });
 </script>
+
 
 </body>
 </html>
