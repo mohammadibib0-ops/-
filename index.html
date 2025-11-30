@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>بنك أسئلة - التوزيعات الاحتمالية (50 سؤال)</title>
+
+  <!-- خط عربي يشبه الكتابة اليدوية -->
+  <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Tahoma", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .question-page {
+      display: none;
+      background-color: #ffffff;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      min-height: 60vh;
+    }
+    .question-page.active {
+      display: block;
+    }
+    h1, h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    button {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .show-solution-btn {
+      background-color: #007bff;
+      color: #fff;
+      margin-top: 10px;
+    }
+
+    /* === شكل الحل: خط يدوي وخلفية ورقة مسطّرة === */
+    .solution {
+      margin-top: 15px;
+      padding: 18px 22px;
+      background-image: linear-gradient(#e3f2ff 1px, transparent 1px);
+      background-size: 100% 26px;
+      background-color: #ffffff;
+      border-radius: 6px;
+      display: none;
+      line-height: 2;
+      font-family: 'Reem Kufi Ink', 'Tahoma', sans-serif;
+      font-size: 1.1rem;
+    }
+
+    .source {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .top-bar {
+      text-align: center;
+      padding: 10px;
+      background-color: #222;
+      color: #fff;
+    }
+    .nCr {
+      display: inline-block;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .nCr .top, .nCr .bottom {
+      display: block;
+      line-height: 1.1;
+    }
+    .nCr::before {
+      content: "(";
+      font-size: 1.2em;
+      vertical-align: middle;
+      margin-left: 3px;
+    }
+    .nCr::after {
+      content: ")";
+      font-size: 1.2em;
+      vertical-align: middle;
+      margin-right: 3px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  بنك أسئلة مهارات عليا – التوزيع الهندسي، التوزيع ذي الحدّين، التوزيع الطبيعي (50 سؤال)
+</div>
+
+<div class="container">
+  <h1>بنك أسئلة – وحدة التوزيعات الاحتمالية</h1>
+  <p style="text-align:center;">
+    كل سؤال في صفحة، اضغط على <strong>إظهار الحل</strong> لرؤية الحل المفصّل. استخدم الأزرار في الأسفل للتنقّل بين الأسئلة.
+  </p>
+
+  <!-- =================== سؤال 1 =================== -->
+  <div class="question-page active" id="q1">
+    <h2>السؤال 1</h2>
+    <p>
+      في مصنع، احتمال أن تكون القطعة معيبة يساوي <strong>0.05</strong> في كل تجربة مستقلة.
+      يمثّل المتغيّر العشوائي الهندسي <strong>X</strong> عدد القطع المفحوصة حتى تظهر
+      أول قطعة معيبة.
+      <br>
+      أ) أوجد تقريبًا <strong>P(X = 4)</strong>.
+      <br>
+      ب) ما احتمال أن تُفحص على الأكثر 4 قطع حتى تظهر أول قطعة معيبة؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(1)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol1">
+      <p>
+        لدينا توزيع هندسي بمعلمة النجاح <strong>p = 0.05</strong>، واحتمال الفشل <strong>q = 0.95</strong>.
+      </p>
+      <p>
+        أ) P(X = k) = q^{k-1} ⋅ p.
+        <br>
+        P(X = 4) = 0.95^{3} × 0.05 ≈ 0.857 × 0.05 ≈ 0.0429.
+      </p>
+      <p>
+        ب) P(X ≤ 4) = 1 − P(X &gt; 4) = 1 − q^{4}.
+        <br>
+        q^{4} = 0.95^{4} ≈ 0.8145 ⇒ P(X ≤ 4) ≈ 0.1855.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الهندسي – قانون الاحتمال في نفس الفصل.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <span></span>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 2 =================== -->
+  <div class="question-page" id="q2">
+    <h2>السؤال 2</h2>
+    <p>
+      في تجربة هندسية، احتمال النجاح في كل تجربة يساوي <strong>0.2</strong>.
+      إذا كان المتغيّر العشوائي <strong>X</strong> يمثّل عدد المحاولات حتى أول نجاح:
+      <br>
+      أ) أوجد <strong>E(X)</strong>.
+      <br>
+      ب) أوجد <strong>Var(X)</strong>.
+      <br>
+      ج) علّق على قيمة التباين مقارنة بالوسط.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(2)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol2">
+      <p>
+        في التوزيع الهندسي:
+        <br>
+        E(X) = 1/p ، و Var(X) = (1 − p) / p^{2}.
+      </p>
+      <p>
+        أ) E(X) = 1 / 0.2 = 5.
+      </p>
+      <p>
+        ب) Var(X) = 0.8 / 0.04 = 20.
+      </p>
+      <p>
+        ج) التباين أكبر بكثير من الوسط (20 مقابل 5) مما يدل على تشتّت كبير في عدد المحاولات المطلوبة.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الهندسي – الوسط والتباين.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 3 =================== -->
+  <div class="question-page" id="q3">
+    <h2>السؤال 3</h2>
+    <p>
+      في استطلاع هاتفي، احتمال أن يوافق الشخص على المشاركة يساوي <strong>0.3</strong>.
+      يتّصل الباحث عشوائيًا بالأشخاص حتى يجد أول شخص يوافق.
+      <br>
+      أ) ما احتمال أن يكون أول موافق هو الشخص الخامس الذي يتصل به الباحث؟
+      <br>
+      ب) إذا كان أقصى عدد من الاتصالات الممكنة هو 8، فما احتمال أن ينجح الباحث
+      في إيجاد مشارك خلال هذه الاتصالات الثمانية؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(3)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol3">
+      <p>
+        توزيع هندسي بمعلمة p = 0.3, و q = 0.7.
+      </p>
+      <p>
+        أ) P(X = 5) = q^{4} ⋅ p = 0.7^{4} × 0.3 ≈ 0.2401 × 0.3 = 0.0720.
+      </p>
+      <p>
+        ب) P(X ≤ 8) = 1 − P(X &gt; 8) = 1 − q^{8} ≈ 1 − 0.7^{8} ≈ 0.9424.
+      </p>
+      <p class="source">
+        من فقرة: تطبيقات حياتية للتوزيع الهندسي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 4 =================== -->
+  <div class="question-page" id="q4">
+    <h2>السؤال 4</h2>
+    <p>
+      تُرمى قطعة نقود غير متكافئة عشر مرات متتالية، بحيث
+      يكون احتمال ظهور الصورة في كل رمية <strong>0.6</strong>.
+      ليكن <strong>X</strong> عدد مرات ظهور الصورة.
+      <br>
+      أ) أوجد تقريبًا <strong>P(X = 7)</strong>.
+      <br>
+      ب) أوجد تقريبًا <strong>P(X ≤ 6)</strong>.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(4)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol4">
+      <p>
+        X ~ B(10, 0.6).
+      </p>
+      <p>
+        أ) P(X = 7) =
+        <span class="nCr"><span class="top">10</span><span class="bottom">7</span></span>
+        0.6^{7} × 0.4^{3}.
+        <br>
+        التوافيق = 120 تقريبًا، وبالحاسبة:
+        <br>
+        P(X = 7) ≈ 0.215.
+      </p>
+      <p>
+        ب) P(X ≤ 6) = Σ P(X = k) من k = 0 إلى 6.
+        <br>
+        باستخدام آلة إحصائية أو جدول: P(X ≤ 6) ≈ 0.367.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع ذي الحدّين – رمي قطعة النقود.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 5 =================== -->
+  <div class="question-page" id="q5">
+    <h2>السؤال 5</h2>
+    <p>
+      في اختبار مكوَّن من 15 سؤال اختيار من متعدّد، لكل سؤال أربع بدائل،
+      يجيب طالب تخمينًا بدون معرفة، أي أن احتمال الإجابة الصحيحة في كل سؤال
+      يساوي <strong>0.25</strong>. ليكن <strong>X</strong> عدد الإجابات الصحيحة.
+      <br>
+      أ) أوجد تقريبًا <strong>P(X = 5)</strong>.
+      <br>
+      ب) أوجد تقريبًا <strong>P(X ≥ 7)</strong>.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(5)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol5">
+      <p>
+        X ~ B(15, 0.25).
+      </p>
+      <p>
+        أ) P(X = 5) =
+        <span class="nCr"><span class="top">15</span><span class="bottom">5</span></span>
+        0.25^{5} × 0.75^{10} ≈ 0.202.
+      </p>
+      <p>
+        ب) P(X ≥ 7) = 1 − P(X ≤ 6).
+        <br>
+        من الحاسبة: P(X ≤ 6) ≈ 0.882 ⇒ P(X ≥ 7) ≈ 0.118.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع ذي الحدّين – تطبيقات على الاختبارات.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 6 =================== -->
+  <div class="question-page" id="q6">
+    <h2>السؤال 6</h2>
+    <p>
+      ينتج خطّ إنتاج إلكتروني شرائح مع احتمال فشل يساوي <strong>0.1</strong> في كل شريحة
+      وبصورة مستقلة. تُفحص عيِّنة عشوائية مكوَّنة من 20 شريحة.
+      <br>
+      أ) ما احتمال احتواء العيِّنة على 3 شرائح معطوبة بالضبط؟
+      <br>
+      ب) إذا رُفضت الشحنة إذا كان عدد الشرائح المعطوبة في العيِّنة أكبر من 4،
+      فما احتمال قبول الشحنة؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(6)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol6">
+      <p>
+        ليكن X عدد الشرائح المعطوبة: X ~ B(20, 0.1).
+      </p>
+      <p>
+        أ) P(X = 3) =
+        <span class="nCr"><span class="top">20</span><span class="bottom">3</span></span>
+        0.1^{3} × 0.9^{17} ≈ 0.190.
+      </p>
+      <p>
+        ب) قبول الشحنة ⇔ X ≤ 4.
+        <br>
+        P(X ≤ 4) ≈ 0.957.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع ذي الحدّين – تطبيقات صناعية.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 7 =================== -->
+  <div class="question-page" id="q7">
+    <h2>السؤال 7</h2>
+    <p>
+      في توزيع ذي حدّين X ~ B(n, 0.4) وُجد أن
+      E(X) = 8. استنتج:
+      <br>
+      أ) قيمة n.
+      <br>
+      ب) قيمة Var(X).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(7)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol7">
+      <p>
+        E(X) = n p = 8 ⇒ n × 0.4 = 8 ⇒ n = 20.
+      </p>
+      <p>
+        Var(X) = n p (1 − p) = 20 × 0.4 × 0.6 = 4.8.
+      </p>
+      <p class="source">
+        من فقرة: الوسط والتباين في التوزيع ذي الحدّين.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 8 =================== -->
+  <div class="question-page" id="q8">
+    <h2>السؤال 8</h2>
+    <p>
+      إذا كان X ~ B(50, p) ووجد عمليًا أن
+      P(X = 20) ≈ P(X = 30)، استنتج قيمة p تقريبًا
+      بمقارنة الحدّين.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(8)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol8">
+      <p>
+        P(X = 20) =
+        <span class="nCr"><span class="top">50</span><span class="bottom">20</span></span>
+        p^{20} (1 − p)^{30}.
+        <br>
+        P(X = 30) =
+        <span class="nCr"><span class="top">50</span><span class="bottom">30</span></span>
+        p^{30} (1 − p)^{20}.
+      </p>
+      <p>
+        نسبة الاحتمالين:
+        <br>
+        [p^{30} (1 − p)^{20}] / [p^{20} (1 − p)^{30}] =
+        (p / (1 − p))^{10} ≈ 1
+        ⇒ p / (1 − p) ≈ 1 ⇒ p ≈ 0.5.
+      </p>
+      <p class="source">
+        من فقرة: مهارات عليا في التوزيع ذي الحدّين (مقارنة الحدود).
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 9 =================== -->
+  <div class="question-page" id="q9">
+    <h2>السؤال 9</h2>
+    <p>
+      في تجربة ذات حدّين X ~ B(n, 0.25) وُجد أن 
+      Var(X) = 3.75. أوجد قيمة n ثم
+      أوجد P(X = 0).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(9)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol9">
+      <p>
+        Var(X) = n p (1 − p) = n × 0.25 × 0.75 = 0.1875 n = 3.75 ⇒ n = 20.
+      </p>
+      <p>
+        P(X = 0) = (1 − p)^{20} = 0.75^{20} ≈ 0.0003.
+      </p>
+      <p class="source">
+        من فقرة: الربط بين التباين ومعلمة التوزيع ذي الحدّين.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 10 =================== -->
+  <div class="question-page" id="q10">
+    <h2>السؤال 10</h2>
+    <p>
+      في وحدة الجودة، تُختار عيّنة من 100 منتج من خط إنتاج حيث احتمال أن يكون المنتج 
+      مطابقًا للمواصفات يساوي <strong>0.96</strong>. ليكن X عدد المنتجات المطابقة.
+      <br>
+      أ) أوجد E(X) و Var(X).
+      <br>
+      ب) باستخدام تقريب التوزيع الطبيعي للتوزيع ذي الحدّين، قدّر احتمال أن يكون عدد المنتجات
+      المطابقة بين 92 و 100 (شاملاً).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(10)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol10">
+      <p>
+        أ) X ~ B(100, 0.96).
+        <br>
+        μ = 96 ، و Var = 3.84 ⇒ σ ≈ 1.96.
+      </p>
+      <p>
+        ب) بالتقريب الطبيعي: X ≈ N(96, 1.96).
+        <br>
+        نريد P(92 ≤ X ≤ 100) مع التصحيح الاستمراري:
+        <br>
+        P(91.5 &lt; X &lt; 100.5).
+      </p>
+      <p>
+        Z1 = (91.5 − 96) / 1.96 ≈ −2.30،
+        Z2 = (100.5 − 96) / 1.96 ≈ 2.30.
+        <br>
+        P(−2.30 ≤ Z ≤ 2.30) ≈ 0.978.
+      </p>
+      <p class="source">
+        من فقرة: تقريب التوزيع ذي الحدّين بالتوزيع الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 11 =================== -->
+  <div class="question-page" id="q11">
+    <h2>السؤال 11</h2>
+    <p>
+      يتوزع وزن العبوات المعبّأة آليًا توزيعًا طبيعيًا بمتوسط <strong>100</strong> غرام
+      وانحراف معياري <strong>2.5</strong> غرام.
+      <br>
+      أ) ما احتمال أن يكون وزن عبوة مختارة عشوائيًا بين 97.5 و 102.5 غرام؟
+      <br>
+      ب) فسّر النتيجة بالاستفادة من قاعدة 68–95–99.7.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(11)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol11">
+      <p>
+        X ~ N(100, 2.5).
+      </p>
+      <p>
+        أ) 97.5 و 102.5 تبعدان انحرافًا معياريًا واحدًا عن المتوسط:
+        <br>
+        Z = (X − 100) / 2.5 ⇒ Z = −1 و Z = 1.
+        <br>
+        P(97.5 ≤ X ≤ 102.5) = P(−1 ≤ Z ≤ 1) ≈ 0.68.
+      </p>
+      <p>
+        ب) هذا يعبّر عن أن حوالي 68% من البيانات تقع ضمن انحراف معياري واحد من المتوسط.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الطبيعي – القاعدة التقريبية 68–95–99.7.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 12 =================== -->
+  <div class="question-page" id="q12">
+    <h2>السؤال 12</h2>
+    <p>
+      تتوزع أطوال مجموعة كبيرة من النباتات توزيعًا طبيعيًا بمتوسط <strong>36</strong> سم
+      وانحراف معياري <strong>3</strong> سم.
+      <br>
+      أ) ما نسبة النباتات التي يزيد طولها عن 39 سم تقريبًا؟
+      <br>
+      ب) ما نسبة النباتات التي يقل طولها عن 30 سم تقريبًا؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(12)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol12">
+      <p>
+        أ) 39 يبعد انحرافًا معياريًا واحدًا عن المتوسط:
+        <br>
+        Z = (39 − 36)/3 = 1.
+        <br>
+        P(X &gt; 39) = P(Z &gt; 1) = (1 − 0.68)/2 = 0.16.
+      </p>
+      <p>
+        ب) 30 يبعد 2 انحراف معياري تحت المتوسط:
+        <br>
+        Z = (30 − 36)/3 = −2.
+        <br>
+        P(Z &lt; −2) ≈ 0.025 ⇒ 2.5%.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الطبيعي – استخدام القاعدة التقريبية.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 13 =================== -->
+  <div class="question-page" id="q13">
+    <h2>السؤال 13</h2>
+    <p>
+      إذا كان X ~ N(50, 4) (المتوسط 50 والانحراف المعياري 4).
+      أوجد تقريبًا:
+      <br>
+      أ) P(46 ≤ X ≤ 54).
+      <br>
+      ب) P(X ≥ 58).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(13)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol13">
+      <p>
+        أ) لـ 46: Z = (46 − 50)/4 = −1،
+        ولـ 54: Z = 1.
+        <br>
+        P(46 ≤ X ≤ 54) = P(−1 ≤ Z ≤ 1) ≈ 0.68.
+      </p>
+      <p>
+        ب) لـ 58: Z = (58 − 50)/4 = 2.
+        <br>
+        P(X ≥ 58) = P(Z ≥ 2) ≈ 0.0228.
+      </p>
+      <p class="source">
+        من فقرة: التحويل إلى المتغيّر المعياري Z.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 14 =================== -->
+  <div class="question-page" id="q14">
+    <h2>السؤال 14</h2>
+    <p>
+      تتوزع درجات مادة الإحصاء توزيعًا طبيعيًا بمتوسط <strong>70</strong> وانحراف معياري
+      <strong>8</strong>. إذا نجح الطالب إذا كانت درجته 60 فأكثر،
+      فما نسبة الطلاب الناجحين تقريبًا؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(14)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol14">
+      <p>
+        نريد P(X ≥ 60) لـ X ~ N(70, 8).
+        <br>
+        Z = (60 − 70)/8 = −1.25.
+        <br>
+        P(X ≥ 60) = P(Z ≥ −1.25) = P(Z ≤ 1.25) ≈ 0.894.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الطبيعي – تطبيقات على درجات الاختبارات.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 15 =================== -->
+  <div class="question-page" id="q15">
+    <h2>السؤال 15</h2>
+    <p>
+      في توزيع طبيعي، كان احتمال أن تقل قيمة X عن 40 يساوي تقريبًا
+      نفس احتمال أن تزيد عن 60. وضِّح كيف يمكن استنتاج أن المتوسط هو
+      منتصف هاتين القيمتين، ثم استنتج قيمة المتوسط.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(15)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol15">
+      <p>
+        في التوزيع الطبيعي المنحنى متماثل حول المتوسط μ.
+        إذا كان P(X &lt; 40) = P(X &gt; 60) فهذا يعني أن 40 و 60
+        تبعدان نفس المسافة عن μ على الجانبين.
+      </p>
+      <p>
+        إذن μ يقع في منتصف 40 و60:
+        <br>
+        μ = (40 + 60) / 2 = 50.
+      </p>
+      <p class="source">
+        من فقرة: خصائص منحنى التوزيع الطبيعي – التماثل حول المتوسط.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 16 =================== -->
+  <div class="question-page" id="q16">
+    <h2>السؤال 16</h2>
+    <p>
+      إذا كان Z ~ N(0, 1).
+      <br>
+      أ) أوجد تقريبًا P(−2.13 ≤ Z ≤ 2.13).
+      <br>
+      ب) أوجد تقريبًا P(Z &gt; 1.75).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(16)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol16">
+      <p>
+        أ) من جدول Z:
+        <br>
+        P(Z ≤ 2.13) ≈ 0.9834،
+        و P(Z ≤ −2.13) = 1 − 0.9834 = 0.0166.
+        <br>
+        إذن P(−2.13 ≤ Z ≤ 2.13) ≈ 0.9834 − 0.0166 = 0.9668.
+      </p>
+      <p>
+        ب) P(Z &gt; 1.75) = 1 − P(Z ≤ 1.75) ≈ 1 − 0.9599 = 0.0401.
+      </p>
+      <p class="source">
+        من فقرة: جدول التوزيع الطبيعي القياسي – قراءة المساحات.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 17 =================== -->
+  <div class="question-page" id="q17">
+    <h2>السؤال 17</h2>
+    <p>
+      إذا كان X ~ N(μ, 9) وعُلم أن
+      P(X &lt; 63) = 0.1587.
+      أوجد قيمة μ ثم احسب
+      P(μ − 3 ≤ X ≤ μ + 3).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(17)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol17">
+      <p>
+        σ = 3 لأن التباين 9.
+        <br>
+        0.1587 تقابل Z = −1 تقريبًا.
+        <br>
+        (63 − μ)/3 = −1 ⇒ 63 − μ = −3 ⇒ μ = 66.
+      </p>
+      <p>
+        نريد P(63 ≤ X ≤ 69).
+        <br>
+        63 و69 تبعدان انحرافًا معياريًا واحدًا عن μ:
+        <br>
+        Z = −1 و Z = 1 ⇒ الاحتمال ≈ 0.68.
+      </p>
+      <p class="source">
+        من فقرة: المسائل العكسية لإيجاد μ من احتمال معطى.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 18 =================== -->
+  <div class="question-page" id="q18">
+    <h2>السؤال 18</h2>
+    <p>
+      أزمنة خدمة العملاء في بنك ما تتبع توزيعًا طبيعيًا بمتوسط
+      <strong>6</strong> دقائق وانحراف معياري <strong>1.2</strong> دقيقة.
+      <br>
+      أ) ما احتمال أن يتراوح زمن خدمة عميل عشوائي بين 5 و7 دقائق؟
+      <br>
+      ب) ما الزمن الذي يعلوه فقط 2.5% من أزمنة الخدمة؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(18)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol18">
+      <p>
+        أ) نريد P(5 ≤ X ≤ 7).
+        <br>
+        لـ 5: Z = (5 − 6)/1.2 ≈ −0.83.
+        <br>
+        لـ 7: Z = (7 − 6)/1.2 ≈ 0.83.
+        <br>
+        P(Z ≤ 0.83) ≈ 0.7967،
+        P(Z ≤ −0.83) ≈ 0.2033.
+        <br>
+        الاحتمال ≈ 0.7967 − 0.2033 = 0.5934.
+      </p>
+      <p>
+        ب) نريد x بحيث P(X &gt; x) = 0.025 ⇒ P(X ≤ x) = 0.975.
+        <br>
+        0.975 تقابل Z = 1.96.
+        <br>
+        x = 6 + 1.96 × 1.2 ≈ 8.352 دقيقة تقريبًا.
+      </p>
+      <p class="source">
+        من فقرة: تطبيقات على أزمنة الخدمة في التوزيع الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 19 =================== -->
+  <div class="question-page" id="q19">
+    <h2>السؤال 19</h2>
+    <p>
+      درجات اختبار معيّن تتوزع طبيعيًا بمتوسط <strong>80</strong> وانحراف معياري
+      <strong>6</strong>. إذا تقرّر منح مكافأة لأعلى 10% من الطلاب، فما
+      الحدّ الأدنى للدرجة التي يجب أن يحصل عليها الطالب لينال المكافأة؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(19)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol19">
+      <p>
+        نريد x بحيث P(X ≥ x) = 0.10 ⇒ P(X ≤ x) = 0.90.
+        <br>
+        0.90 تقابل Z ≈ 1.28.
+        <br>
+        x = 80 + 1.28 × 6 = 87.68 ≈ 88 درجة.
+      </p>
+      <p class="source">
+        من فقرة: إيجاد القيم الحرجة باستخدام جدول Z.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 20 =================== -->
+  <div class="question-page" id="q20">
+    <h2>السؤال 20</h2>
+    <p>
+      عمر بطارية هاتف يتوزع توزيعًا طبيعيًا بمتوسط <strong>30</strong> شهرًا وانحراف معياري
+      <strong>4</strong> أشهر.
+      <br>
+      أ) ما نسبة البطاريات التي يقل عمرها عن 24 شهرًا؟
+      <br>
+      ب) إذا أرادت الشركة ضمان البطارية حتى عمر بحيث لا يتحمّلون سوى
+      استبدال 5% من البطاريات تقريبًا، فما قيمة هذا العمر؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(20)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol20">
+      <p>
+        أ) Z = (24 − 30)/4 = −1.5.
+        <br>
+        P(Z &lt; −1.5) ≈ 0.0668 ⇒ 6.68%.
+      </p>
+      <p>
+        ب) نريد x بحيث P(X &lt; x) = 0.05 ⇒ Z = −1.645.
+        <br>
+        (x − 30)/4 = −1.645 ⇒ x ≈ 23.42 شهرًا.
+      </p>
+      <p class="source">
+        من فقرة: أعمار المنتجات والتوزيع الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 21 =================== -->
+  <div class="question-page" id="q21">
+    <h2>السؤال 21</h2>
+    <p>
+      إذا كان X ~ N(μ, σ) وُجد أن
+      P(X &lt; 50) = 0.6915 و
+      P(X &lt; 60) = 0.9332.
+      بافتراض أن σ ثابت، أوجد μ و σ.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(21)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol21">
+      <p>
+        0.6915 تقابل Z ≈ 0.50،
+        و0.9332 تقابل Z ≈ 1.50.
+      </p>
+      <p>
+        (50 − μ)/σ = 0.5 ،
+        (60 − μ)/σ = 1.5.
+        <br>
+        بطرح المعادلتين: 10/σ = 1 ⇒ σ = 10.
+        <br>
+        بالتعويض: 50 − μ = 5 ⇒ μ = 45.
+      </p>
+      <p class="source">
+        من فقرة: مسائل عكسية لإيجاد μ و σ من احتمالات معطاة.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 22 =================== -->
+  <div class="question-page" id="q22">
+    <h2>السؤال 22</h2>
+    <p>
+      درجة حرارة نوع من المكوّنات الإلكترونية عند التشغيل تتوزع طبيعيًا بمتوسط
+      <strong>75</strong> درجة مئوية وانحراف معياري <strong>5</strong> درجات.
+      الجهاز يتعطل إذا تجاوزت درجة الحرارة 85 درجة.
+      <br>
+      أ) ما احتمال تعطل المكوّن في تشغيل واحد؟
+      <br>
+      ب) إذا احتوى الجهاز على 4 مكوّنات مستقلة من هذا النوع، فما احتمال أن يتعطل
+      على الأقل مكوّن واحد في تشغيل واحد؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(22)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol22">
+      <p>
+        أ) Z = (85 − 75)/5 = 2 ⇒ P(X &gt; 85) = P(Z &gt; 2) ≈ 0.0228.
+      </p>
+      <p>
+        ب) ليكن Y عدد المكوّنات المتعطلة: Y ~ B(4, 0.0228).
+        <br>
+        P(Y ≥ 1) = 1 − P(Y = 0) = 1 − (1 − 0.0228)^{4}.
+        <br>
+        0.9772^{4} ≈ 0.910 ⇒ P(Y ≥ 1) ≈ 0.090.
+      </p>
+      <p class="source">
+        من فقرة: الربط بين التوزيع الطبيعي وذي الحدّين.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 23 =================== -->
+  <div class="question-page" id="q23">
+    <h2>السؤال 23</h2>
+    <p>
+      إذا كان X ~ N(100, 16) (أي σ = 4) وأُريد تعيين
+      مجال يشمل تقريبًا 95% من القيم حول المتوسط.
+      <br>
+      أوجد هذا المجال.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(23)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol23">
+      <p>
+        القاعدة 95% تقريبًا: μ ± 2σ.
+        <br>
+        μ = 100, σ = 4 ⇒ المجال [92 , 108].
+      </p>
+      <p class="source">
+        من فقرة: القاعدة 68–95–99.7 للتوزيع الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 24 =================== -->
+  <div class="question-page" id="q24">
+    <h2>السؤال 24</h2>
+    <p>
+      مواعيد وصول حافلة إلى محطة ما تتوزع حول المتوسط توزيعًا طبيعيًا.
+      تشير البيانات إلى أن 80% من مرات الوصول
+      تكون ضمن مدىّ قدره 10 دقائق حول المتوسط (من μ − 5 إلى μ + 5).
+      بافتراض نموذج طبيعي، استنتج تقريبًا الانحراف المعياري.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(24)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol24">
+      <p>
+        نريد P(μ − 5 ≤ X ≤ μ + 5) = 0.80 ⇒ P(|Z| ≤ 5/σ) = 0.80.
+      </p>
+      <p>
+        من جدول Z، P(|Z| ≤ 1.28) ≈ 0.80.
+        <br>
+        إذن 5/σ ≈ 1.28 ⇒ σ ≈ 5 / 1.28 ≈ 3.91 دقيقة.
+      </p>
+      <p class="source">
+        من فقرة: تفسير الانحراف المعياري باستخدام مجالات احتمالية.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 25 =================== -->
+  <div class="question-page" id="q25">
+    <h2>السؤال 25</h2>
+    <p>
+      متوسط أطوال مجموعة من الطلاب هو 170 سم بانحراف معياري
+      6 سم، والتوزيع طبيعي.
+      <br>
+      أ) إذا اختير طالب عشوائيًا، ما احتمال أن يكون طوله بين 164 و176 سم؟
+      <br>
+      ب) إذا اختير طالبان عشوائيًا ومستقلاّن، فما احتمال أن يكون طول كلٍّ منهما
+      أكبر من 182 سم؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(25)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol25">
+      <p>
+        أ) لـ 164: Z = (164 − 170)/6 = −1،
+        ولـ 176: Z = 1.
+        <br>
+        P(164 ≤ X ≤ 176) ≈ 0.68.
+      </p>
+      <p>
+        ب) لـ 182: Z = (182 − 170)/6 = 2.
+        <br>
+        P(X &gt; 182) ≈ 0.0228.
+        <br>
+        للطالبين المستقلين: (0.0228)^{2} ≈ 0.0005.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الطبيعي – مثال أطوال الطلاب.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 26 =================== -->
+  <div class="question-page" id="q26">
+    <h2>السؤال 26</h2>
+    <p>
+      احتمال نجاح تجربة معينة يساوي 0.12 في كل محاولة مستقلة.
+      يمثّل X عدد المحاولات حتى أول نجاح (توزيع هندسي).
+      <br>
+      أ) أوجد P(X &gt; 5).
+      <br>
+      ب) أوجد P(3 ≤ X ≤ 7).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(26)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol26">
+      <p>
+        p = 0.12 ، q = 0.88.
+      </p>
+      <p>
+        أ) P(X &gt; 5) = q^{5} = 0.88^{5} ≈ 0.527.
+      </p>
+      <p>
+        ب) P(3 ≤ X ≤ 7) = P(X ≤ 7) − P(X ≤ 2) = (1 − q^{7}) − (1 − q^{2}) = q^{2} − q^{7}.
+        <br>
+        q^{2} = 0.7744 ، و q^{7} ≈ 0.408.
+        <br>
+        الفرق ≈ 0.7744 − 0.408 = 0.3664.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الهندسي – استخدام الصيغة التراكمية.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 27 =================== -->
+  <div class="question-page" id="q27">
+    <h2>السؤال 27</h2>
+    <p>
+      في لعبة حظ، احتمال الفوز في محاولة واحدة هو 0.18.
+      يلعب شخص حتى يحقق أول فوز.
+      <br>
+      أ) ما احتمال أن يحتاج إلى أكثر من 10 محاولات حتى يربح لأول مرة؟
+      <br>
+      ب) إذا علمنا أنه لم يربح في أول 5 محاولات، فما احتمال أن يكون الفوز الأول
+      في المحاولة الثامنة بالضبط؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(27)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol27">
+      <p>
+        توزيع هندسي p = 0.18, q = 0.82.
+      </p>
+      <p>
+        أ) P(X &gt; 10) = q^{10} = 0.82^{10} ≈ 0.139.
+      </p>
+      <p>
+        ب) بما أن المحاولات مستقلة، ومع العلم أنه فشل 5 مرات،
+        يبقى لدينا تجربة هندسية جديدة من المحاولة 6.
+        الفوز في المحاولة 8 يعني فشلين ثم نجاح:
+        <br>
+        q^{2} p = 0.82^{2} × 0.18 ≈ 0.6724 × 0.18 ≈ 0.121.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الهندسي – خاصية الذاكرة وعدم الاعتماد على الماضي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 28 =================== -->
+  <div class="question-page" id="q28">
+    <h2>السؤال 28</h2>
+    <p>
+      احتمال أن ينجح الطالب في اجتياز اختبار قيادة من المحاولة الأولى يساوي
+      0.4. يُفترض أن احتمال النجاح ثابت في المحاولات اللاحقة.
+      <br>
+      أ) ما احتمال أن ينجح الطالب لأول مرة في المحاولة الثالثة؟
+      <br>
+      ب) إذا تطلّب الأمر أكثر من 4 محاولات، فما احتمال أن لا ينجح حتى المحاولة السادسة؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(28)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol28">
+      <p>
+        p = 0.4, q = 0.6.
+      </p>
+      <p>
+        أ) P(X = 3) = q^{2} p = 0.6^{2} × 0.4 = 0.36 × 0.4 = 0.144.
+      </p>
+      <p>
+        ب) نريد P(X &gt; 6 | X &gt; 4) = P(X &gt; 6) / P(X &gt; 4) = q^{6} / q^{4} = q^{2} = 0.36.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الهندسي – استخدام الاحتمال الشرطي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 29 =================== -->
+  <div class="question-page" id="q29">
+    <h2>السؤال 29</h2>
+    <p>
+      في توزيع ذي حدّين X ~ B(n, p) وُجد أن
+      P(X = 1) = 0.27 و P(X = 2) = 0.243.
+      <br>
+      أ) أوجد قيمتي n و p (سؤال تفكير عالي يتطلّب إنشاء معادلتين وحلّهما).
+      <br>
+      ب) احسب P(X = 0) بعد إيجاد n و p عددياً.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(29)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol29">
+      <p>
+        P(X = 1) = n p (1 − p)^{n−1} = 0.27.
+        <br>
+        P(X = 2) =
+        <span class="nCr"><span class="top">n</span><span class="bottom">2</span></span>
+        p^{2} (1 − p)^{n−2} = 0.243.
+      </p>
+      <p>
+        بقسمة P(X = 2) على P(X = 1):
+        <br>
+        [n(n−1)/2 p^{2} (1 − p)^{n−2}] / [n p (1 − p)^{n−1}]
+        = (n−1)/2 ⋅ [p/(1 − p)] = 0.243 / 0.27 = 0.9.
+      </p>
+      <p>
+        نحصل على المعادلة:
+        <br>
+        (n−1)p = 1.8(1 − p).
+        <br>
+        مع المعادلة الأولى يمكن للطالب حلّ النظام عدديًا (باستخدام آلة حاسبة) لإيجاد n و p
+        ثم حساب P(X = 0) = (1 − p)^{n}.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع ذي الحدّين – مسائل عكسية على الحدود المتتالية (سؤال مهارات عليا مفتوح).
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 30 =================== -->
+  <div class="question-page" id="q30">
+    <h2>السؤال 30</h2>
+    <p>
+      في اختبار قصير مكوّن من 8 أسئلة صحيح/خطأ، يجيب طالب بشكل عشوائي بالكامل
+      (احتمال الإجابة الصحيحة في كل سؤال 0.5).
+      <br>
+      أ) ما احتمال أن يحصل على أكثر من 6 إجابات صحيحة؟
+      <br>
+      ب) ما احتمال أن يحصل على عدد زوجي من الإجابات الصحيحة؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(30)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol30">
+      <p>
+        X ~ B(8, 0.5).
+      </p>
+      <p>
+        أ) P(X &gt; 6) = P(X = 7) + P(X = 8).
+        <br>
+        P(X = 7) =
+        <span class="nCr"><span class="top">8</span><span class="bottom">7</span></span>
+        0.5^{8} = 8/256 = 0.03125.
+        <br>
+        P(X = 8) = 1/256 ≈ 0.0039.
+        <br>
+        المجموع ≈ 0.0352.
+      </p>
+      <p>
+        ب) عندما p = 0.5 التوزيع متماثل، ومجموع احتمالات القيم الزوجية
+        يساوي مجموع احتمالات القيم الفردية، أي كل منهما = 0.5.
+      </p>
+      <p class="source">
+        من فقرة: خواص التوزيع ذي الحدّين عندما p = 0.5.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 31 =================== -->
+  <div class="question-page" id="q31">
+    <h2>السؤال 31</h2>
+    <p>
+      توزيع ذي حدّين X ~ B(n, p) له وسط 10 وتباين 6.
+      <br>
+      أ) أوجد n و p.
+      <br>
+      ب) احسب P(X = 0).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(31)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol31">
+      <p>
+        E(X) = np = 10 ، Var(X) = np(1 − p) = 6.
+      </p>
+      <p>
+        من الثانية: 10(1 − p) = 6 ⇒ 1 − p = 0.6 ⇒ p = 0.4.
+        <br>
+        من الأولى: n = 10 / 0.4 = 25.
+      </p>
+      <p>
+        P(X = 0) = (1 − p)^{n} = 0.6^{25} (قيمة صغيرة جدًا تُحسب بالآلة).
+      </p>
+      <p class="source">
+        من فقرة: الوسط والتباين وتحديد n و p في التوزيع ذي الحدّين.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 32 =================== -->
+  <div class="question-page" id="q32">
+    <h2>السؤال 32</h2>
+    <p>
+      مصنع ينتج لمبات كهربائية، احتمال أن تكون اللمبة سليمة 0.9.
+      تُفحص عيّنة عشوائية من 100 لمبة، ويُرفض الشحن إذا كان عدد اللمبات
+      السليمة أقل من 85.
+      <br>
+      استخدم تقريب التوزيع الطبيعي للتوزيع ذي الحدّين لتقدير احتمال رفض الشحنة.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(32)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol32">
+      <p>
+        X ~ B(100, 0.9).
+        <br>
+        μ = 90 ، σ^{2} = 9 ⇒ σ = 3.
+      </p>
+      <p>
+        نريد P(X &lt; 85) ≈ P(X ≤ 84.5).
+        <br>
+        Z = (84.5 − 90)/3 ≈ −1.83.
+        <br>
+        P(Z ≤ −1.83) ≈ 0.0336.
+      </p>
+      <p class="source">
+        من فقرة: تقريب التوزيع ذي الحدّين عندما n كبير.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 33 =================== -->
+  <div class="question-page" id="q33">
+    <h2>السؤال 33</h2>
+    <p>
+      في لعبة، يرمي اللاعب ثلاث نردات متمايزة مرة واحدة. يُسجَّل عدد النردات التي
+      تظهر فيها "6". اعتبر هذا العدد متغيرًا عشوائيًا X.
+      <br>
+      أ) حدد نوع التوزيع الذي يتبعه X ومعلماته.
+      <br>
+      ب) احسب P(X = 2) و P(X ≤ 1).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(33)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol33">
+      <p>
+        أ) كل نرد تجربة برنولية: نجاح = ظهور 6 باحتمال 1/6 ≈ 0.1667.
+        <br>
+        X عدد النجاحات في 3 تجارب ⇒ X ~ B(3, 1/6).
+      </p>
+      <p>
+        ب) P(X = 2) =
+        <span class="nCr"><span class="top">3</span><span class="bottom">2</span></span>
+        (1/6)^{2} (5/6) ≈ 0.0694.
+      </p>
+      <p>
+        P(X ≤ 1) = P(0) + P(1).
+        <br>
+        P(0) = (5/6)^{3} ≈ 0.5787.
+        <br>
+        P(1) = 3 × (1/6) (5/6)^{2} ≈ 0.3472.
+        <br>
+        المجموع ≈ 0.9259.
+      </p>
+      <p class="source">
+        من فقرة: أمثلة على التوزيع ذي الحدّين (النرد والقطع النقدية).
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 34 =================== -->
+  <div class="question-page" id="q34">
+    <h2>السؤال 34</h2>
+    <p>
+      احتمال أن يختار زبون منتجًا معيّنًا من بين منتجات محل يساوي 0.3.
+      في يوم ما، دخل للمحل 25 زبونًا بشكل مستقل.
+      <br>
+      أ) ما احتمال أن يختار 5 زبائن فقط هذا المنتج؟
+      <br>
+      ب) قدّر باستخدام التقريب الطبيعي احتمال أن يختار بين 5 و 10 زبائن (شاملاً) هذا المنتج.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(34)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol34">
+      <p>
+        X ~ B(25, 0.3).
+      </p>
+      <p>
+        أ) P(X = 5) =
+        <span class="nCr"><span class="top">25</span><span class="bottom">5</span></span>
+        0.3^{5} × 0.7^{20} (تحسب بالآلة).
+      </p>
+      <p>
+        ب) μ = 7.5 ، σ^{2} = 5.25 ⇒ σ ≈ 2.29.
+        <br>
+        نريد P(5 ≤ X ≤ 10) ≈ P(4.5 &lt; X &lt; 10.5).
+        <br>
+        Z1 ≈ −1.31 ، Z2 ≈ 1.31 ⇒ الاحتمال ≈ 0.81.
+      </p>
+      <p class="source">
+        من فقرة: تقريب التوزيع ذي الحدّين عندما n متوسط وقيمة p ليست قريبة من 0 أو 1.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 35 =================== -->
+  <div class="question-page" id="q35">
+    <h2>السؤال 35</h2>
+    <p>
+      في تجربة ذات حدّين عددها n غير معلوم، احتمال النجاح في كل تجربة
+      0.2. إذا كان احتمال الحصول على صفر نجاحات يساوي تقريبًا
+      0.1074، فما قيمة n؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(35)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol35">
+      <p>
+        P(X = 0) = (1 − 0.2)^{n} = 0.8^{n} = 0.1074.
+      </p>
+      <p>
+        نأخذ لوغاريتم:
+        <br>
+        n ln(0.8) = ln(0.1074) ⇒
+        n = ln(0.1074) / ln(0.8).
+        <br>
+        تقريبًا: ln(0.1074) ≈ −2.23 ، ln(0.8) ≈ −0.223.
+        <br>
+        n ≈ 10.
+      </p>
+      <p class="source">
+        من فقرة: استخدام اللوغاريتمات في مسائل التوزيع ذي الحدّين (سؤال مهارات عليا).
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 36 =================== -->
+  <div class="question-page" id="q36">
+    <h2>السؤال 36</h2>
+    <p>
+      تتوزع درجات مادة معينة توزيعًا طبيعيًا بمتوسط 65 وانحراف معياري
+      9.
+      <br>
+      أ) ما احتمال أن تزيد الدرجة عن 80؟
+      <br>
+      ب) ما الدرجة التي يقل عنها تقريبًا 25% من الطلاب؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(36)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol36">
+      <p>
+        أ) Z = (80 − 65)/9 ≈ 1.67 ⇒ P(X &gt; 80) ≈ 0.0475.
+      </p>
+      <p>
+        ب) نريد x بحيث P(X &lt; x) = 0.25 ⇒ Z = −0.674.
+        <br>
+        x = 65 − 0.674 × 9 ≈ 58.93 درجة تقريبًا.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الطبيعي – استخدام النقاط الربعوية (25% و75%).
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 37 =================== -->
+  <div class="question-page" id="q37">
+    <h2>السؤال 37</h2>
+    <p>
+      زمن إنجاز مهمة برمجية يتبع توزيعًا طبيعيًا بمتوسط 12 ساعة وانحراف معياري
+      2 ساعة.
+      <br>
+      أ) ما احتمال أن تُنجز المهمة في أقل من 10 ساعات؟
+      <br>
+      ب) إذا أُنجزت المهمة في أقل من 10 ساعات، فهل تُعتبر من المهام "السريعة" إحصائيًا؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(37)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol37">
+      <p>
+        أ) Z = (10 − 12)/2 = −1 ⇒ P(X &lt; 10) ≈ 0.1587.
+      </p>
+      <p>
+        ب) القيمة 10 تبعد انحرافًا معياريًا واحدًا أسفل المتوسط ⇒ تقع ضمن أقل 16% تقريبًا،
+        لذا تُعد "سريعة" مقارنة بباقي المهام.
+      </p>
+      <p class="source">
+        من فقرة: تفسير النتائج في ضوء الانحراف المعياري – التوزيع الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 38 =================== -->
+  <div class="question-page" id="q38">
+    <h2>السؤال 38</h2>
+    <p>
+      إذا كان X ~ N(μ, 16) وعُلم أن
+      P(X &gt; 74) = 0.1056.
+      أوجد μ.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(38)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol38">
+      <p>
+        P(X &gt; 74) = 0.1056 ⇒ P(X ≤ 74) = 0.8944.
+      </p>
+      <p>
+        0.8944 تقابل Z ≈ 1.25.
+        <br>
+        (74 − μ)/4 = 1.25 ⇒ 74 − μ = 5 ⇒ μ = 69.
+      </p>
+      <p class="source">
+        من فقرة: إيجاد المتوسط من احتمال جانبي معطى في التوزيع الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 39 =================== -->
+  <div class="question-page" id="q39">
+    <h2>السؤال 39</h2>
+    <p>
+      طول قطعة معدنية يتبع توزيعًا طبيعيًا بمتوسط 50 سم.
+      وُجد أن 4% فقط من القطع أطول من 54 سم.
+      أوجد الانحراف المعياري لهذا التوزيع.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(39)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol39">
+      <p>
+        P(X &gt; 54) = 0.04 ⇒ P(X ≤ 54) = 0.96.
+      </p>
+      <p>
+        0.96 تقابل Z ≈ 1.75.
+        <br>
+        (54 − 50)/σ = 1.75 ⇒ σ = 4 / 1.75 ≈ 2.29 سم.
+      </p>
+      <p class="source">
+        من فقرة: استخدام نقاط القطع لتحديد الانحراف المعياري في التوزيع الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 40 =================== -->
+  <div class="question-page" id="q40">
+    <h2>السؤال 40</h2>
+    <p>
+      إذا كان X ~ N(40, 25) و Y ~ N(55, 16)
+      مستقلين.
+      <br>
+      أ) أوجد التوزيع لـ X + Y (المتوسط والتباين).
+      <br>
+      ب) أوجد تقريبًا P(X + Y &gt; 100).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(40)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol40">
+      <p>
+        أ) مجموع متغيرين طبيعيين مستقلين:
+        <br>
+        X + Y ~ N(40 + 55, 25 + 16) = N(95, 41).
+        <br>
+        σ = √41 ≈ 6.40.
+      </p>
+      <p>
+        ب) P(X + Y &gt; 100) = P(Z &gt; (100 − 95)/6.40) = P(Z &gt; 0.78) ≈ 0.2177.
+      </p>
+      <p class="source">
+        من فقرة: مجموع متغيرين عشوائيين طبيعيين مستقلين.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 41 =================== -->
+  <div class="question-page" id="q41">
+    <h2>السؤال 41</h2>
+    <p>
+      إذا كان X ~ N(μ, σ) وعُلم أن
+      P(μ − σ ≤ X ≤ μ + 2σ) = 0.8185.
+      استخدم جدول Z للتحقّق من أن هذه القيمة منطقية.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(41)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol41">
+      <p>
+        نكتب الاحتمال بدلالة Z:
+        <br>
+        P(μ − σ ≤ X ≤ μ + 2σ) = P(−1 ≤ Z ≤ 2).
+      </p>
+      <p>
+        من الجدول:
+        <br>
+        P(Z ≤ 2) ≈ 0.9773،
+        P(Z ≤ −1) = 0.1587.
+        <br>
+        P(−1 ≤ Z ≤ 2) = 0.9773 − 0.1587 = 0.8186
+        وهي قريبة جدًا من 0.8185.
+      </p>
+      <p class="source">
+        من فقرة: استخدام جدول Z للتحقّق من مجالات احتمالية مركبة.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 42 =================== -->
+  <div class="question-page" id="q42">
+    <h2>السؤال 42</h2>
+    <p>
+      عمر أجهزة حاسوب في شركة ما يتبع توزيعًا طبيعيًا بمتوسط 5 سنوات
+      وانحراف معياري 1 سنة.
+      <br>
+      أ) ما احتمال أن يكون عمر جهاز ما بين 4 و6 سنوات؟
+      <br>
+      ب) إذا اختير 3 أجهزة عشوائيًا، فما احتمال أن يكون عمرها جميعًا بين 4 و6 سنوات؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(42)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol42">
+      <p>
+        أ) لـ 4 و6:
+        <br>
+        Z = −1 ، Z = 1 ⇒ الاحتمال للفرد ≈ 0.68.
+      </p>
+      <p>
+        ب) للأجهزة الثلاثة المستقلة:
+        <br>
+        الاحتمال = 0.68^{3} ≈ 0.314.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الطبيعي والتجارب المستقلة المتعددة.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 43 =================== -->
+  <div class="question-page" id="q43">
+    <h2>السؤال 43</h2>
+    <p>
+      إذا كان Z ~ N(0, 1)، احسب:
+      <br>
+      أ) P(|Z| &gt; 1.96).
+      <br>
+      ب) ما تفسير هذه النتيجة بالنسبة إلى قاعدة 95%؟
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(43)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol43">
+      <p>
+        أ) P(|Z| &gt; 1.96) = 2 P(Z &gt; 1.96).
+        <br>
+        P(Z &gt; 1.96) ≈ 0.025 ⇒ P(|Z| &gt; 1.96) ≈ 0.05.
+      </p>
+      <p>
+        ب) هذا يعني أن حوالي 5% من القيم تقع خارج المجال μ ± 1.96 σ،
+        أي أن 95% تقريبًا تقع داخله (قاعدة 95%).
+      </p>
+      <p class="source">
+        من فقرة: العلاقة بين Z وقاعدة 95% في التوزيع الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 44 =================== -->
+  <div class="question-page" id="q44">
+    <h2>السؤال 44</h2>
+    <p>
+      في توزيع طبيعي غير معلوم المعلمات، عُلم أن
+      2.5% من القيم أقل من 20،
+      وأن 16% من القيم أكبر من 32.
+      بافتراض أن التوزيع طبيعي، أوجد تقريبًا المتوسط والانحراف المعياري.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(44)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol44">
+      <p>
+        P(X &lt; 20) = 0.025 ⇒ Z = −1.96 ⇒ (20 − μ)/σ = −1.96.
+      </p>
+      <p>
+        P(X &gt; 32) = 0.16 ⇒ P(X ≤ 32) = 0.84 ⇒ Z ≈ 0.994.
+        <br>
+        (32 − μ)/σ = 0.994.
+      </p>
+      <p>
+        من المعادلتين:
+        <br>
+        20 − μ = −1.96σ ، 32 − μ = 0.994σ.
+        <br>
+        بطرح الأولى من الثانية:
+        12 = (0.994 + 1.96)σ ≈ 2.954σ ⇒ σ ≈ 4.06.
+      </p>
+      <p>
+        ثم μ ≈ 20 + 1.96σ ≈ 28 تقريبًا.
+      </p>
+      <p class="source">
+        من فقرة: إيجاد μ و σ من نسب مئوية معطاة (سؤال مهارات عليا).
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 45 =================== -->
+  <div class="question-page" id="q45">
+    <h2>السؤال 45</h2>
+    <p>
+      إذا كان X ~ N(30, 9)، فما احتمال أن تقع قيمة X خارج المجال
+      من 24 إلى 36؟ وضِّح ارتباط هذه النتيجة بالقاعدة 68%.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(45)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol45">
+      <p>
+        24 و36 تبعدان انحرافًا معياريًا واحدًا عن المتوسط (σ = 3).
+        <br>
+        P(24 ≤ X ≤ 36) = P(−1 ≤ Z ≤ 1) ≈ 0.68.
+      </p>
+      <p>
+        إذن احتمال الوقوع خارج هذا المجال = 1 − 0.68 = 0.32 (حوالي 32%).
+      </p>
+      <p class="source">
+        من فقرة: تفسير القاعدة 68–95–99.7 عمليًا.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 46 =================== -->
+  <div class="question-page" id="q46">
+    <h2>السؤال 46</h2>
+    <p>
+      عدد مرات وصول الرسائل إلى بريد إلكتروني في ساعة معينة يموذج تقريبًا بتوزيع ذي حدّين
+      B(60, p) (كل دقيقة تجربة، وصول رسالة = نجاح).
+      إذا كان الوسط 12، فاحسب:
+      <br>
+      أ) p.
+      <br>
+      ب) التباين.
+      <br>
+      ج) استخدم التقريب الطبيعي لتقدير احتمال أن يتلقى البريد
+      بين 8 و 16 رسالة (شاملاً) في ساعة.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(46)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol46">
+      <p>
+        أ) E(X) = np = 12 ⇒ 60p = 12 ⇒ p = 0.2.
+      </p>
+      <p>
+        ب) Var(X) = np(1 − p) = 60 × 0.2 × 0.8 = 9.6 ⇒ σ ≈ 3.10.
+      </p>
+      <p>
+        ج) X ≈ N(12, 3.10).
+        <br>
+        نريد P(8 ≤ X ≤ 16) ≈ P(7.5 &lt; X &lt; 16.5).
+        <br>
+        Z1 ≈ (7.5 − 12)/3.10 ≈ −1.45،
+        Z2 ≈ (16.5 − 12)/3.10 ≈ 1.45.
+        <br>
+        P(−1.45 ≤ Z ≤ 1.45) ≈ 0.85 تقريبًا.
+      </p>
+      <p class="source">
+        من فقرة: نمذجة الأحداث الزمنية باستخدام التوزيع ذي الحدّين والتقريب الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 47 =================== -->
+  <div class="question-page" id="q47">
+    <h2>السؤال 47</h2>
+    <p>
+      احتمال أن يكون زبون راضٍ عن خدمة معينة يساوي 0.85.
+      أُجري استبيان عشوائي على 40 زبونًا.
+      <br>
+      أ) احسب الوسط والتباين لعدد الزبائن الراضين.
+      <br>
+      ب) استخدم التقريب الطبيعي لتقدير احتمال أن يكون عدد الراضين على الأقل 36.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(47)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol47">
+      <p>
+        X ~ B(40, 0.85).
+      </p>
+      <p>
+        أ) μ = 40 × 0.85 = 34،
+        σ^{2} = 40 × 0.85 × 0.15 = 5.1 ⇒ σ ≈ 2.26.
+      </p>
+      <p>
+        ب) P(X ≥ 36) ≈ P(X ≥ 35.5).
+        <br>
+        Z = (35.5 − 34)/2.26 ≈ 0.66 ⇒ P(Z ≥ 0.66) ≈ 0.254.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع ذي الحدّين – استبيانات الرضا وتقريب التوزيع الطبيعي.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 48 =================== -->
+  <div class="question-page" id="q48">
+    <h2>السؤال 48</h2>
+    <p>
+      في توزيع هندسي بمعلمة نجاح p، وُجد أن
+      P(X = 1) = 2 P(X = 2).
+      <br>
+      أ) أوجد p.
+      <br>
+      ب) احسب P(X ≥ 3).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(48)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol48">
+      <p>
+        P(X = 1) = p ،
+        P(X = 2) = (1 − p)p.
+        <br>
+        p = 2(1 − p)p ⇒ 1 = 2(1 − p) ⇒ 1 = 2 − 2p ⇒ p = 0.5.
+      </p>
+      <p>
+        ب) P(X ≥ 3) = 1 − P(1) − P(2) = 1 − 0.5 − 0.25 = 0.25.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الهندسي – الربط بين حدود متتالية لإيجاد p.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 49 =================== -->
+  <div class="question-page" id="q49">
+    <h2>السؤال 49</h2>
+    <p>
+      في توزيع هندسي بمعلمة p غير معلومة، وُجد أن
+      P(X &gt; 3) = 0.512.
+      <br>
+      أ) أوجد p.
+      <br>
+      ب) احسب E(X).
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(49)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol49">
+      <p>
+        P(X &gt; 3) = (1 − p)^{3} = 0.512.
+      </p>
+      <p>
+        نلاحظ أن 0.512 = 0.8^{3} ⇒ 1 − p = 0.8 ⇒ p = 0.2.
+      </p>
+      <p>
+        E(X) = 1/p = 5.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الهندسي – استخدام الاحتمال التراكمي لإيجاد p ثم الوسط.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <button onclick="nextQuestion()">السؤال التالي ⭢</button>
+    </div>
+  </div>
+
+  <!-- =================== سؤال 50 =================== -->
+  <div class="question-page" id="q50">
+    <h2>السؤال 50</h2>
+    <p>
+      في توزيع هندسي بمعلمة p = 0.3، يمثّل X عدد المحاولات
+      حتى أول نجاح.
+      <br>
+      أ) احسب P(X = 1) و P(X = 2) و P(X = 3).
+      <br>
+      ب) احسب P(X ≥ 4) بطريقتين:
+      مباشرةً من القانون، وباستخدام متمّم الاحتمال.
+    </p>
+
+    <button class="show-solution-btn" onclick="toggleSolution(50)">إظهار / إخفاء الحل</button>
+    <div class="solution" id="sol50">
+      <p>
+        p = 0.3, q = 0.7.
+      </p>
+      <p>
+        أ)
+        <br>
+        P(X = 1) = 0.3،
+        P(X = 2) = 0.7 × 0.3 = 0.21،
+        P(X = 3) = 0.7^{2} × 0.3 = 0.147.
+      </p>
+      <p>
+        ب) الطريقة الأولى:
+        <br>
+        P(X ≥ 4) = q^{3} = 0.7^{3} = 0.343.
+      </p>
+      <p>
+        الطريقة الثانية:
+        <br>
+        P(X ≥ 4) = 1 − P(X ≤ 3) = 1 − (0.3 + 0.21 + 0.147) = 0.343.
+        <br>
+        النتيجتان متساويتان كما هو متوقع.
+      </p>
+      <p class="source">
+        من فقرة: التوزيع الهندسي – التحقق من التراكم باستخدام المتسلسلات الهندسية.
+      </p>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⭠ السؤال السابق</button>
+      <span></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let currentQuestion = 1;
+  const totalQuestions = 50;
+
+  function showQuestion(num) {
+    if (num < 1 || num > totalQuestions) return;
+    document.getElementById("q" + currentQuestion).classList.remove("active");
+    currentQuestion = num;
+    document.getElementById("q" + currentQuestion).classList.add("active");
+    window.scrollTo(0, 0);
+  }
+
+  function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+      showQuestion(currentQuestion + 1);
+    }
+  }
+
+  function prevQuestion() {
+    if (currentQuestion > 1) {
+      showQuestion(currentQuestion - 1);
+    }
+  }
+
+  function toggleSolution(num) {
+    const sol = document.getElementById("sol" + num);
+    if (sol.style.display === "block") {
+      sol.style.display = "none";
+    } else {
+      sol.style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>
